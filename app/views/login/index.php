@@ -1,29 +1,21 @@
-<?php require_once 'app/views/templates/headerPublic.php'?>
+<?php require_once 'app/views/templates/headerPublic.php'
+?>
 <main role="main" class="container">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>You are not logged in</h1>
-            </div>
-        </div>
-    </div>
-
-<div class="row">
-    <div class="col-sm-auto">
-		<form action="/login/verify" method="post" >
-		<fieldset>
-			<div class="form-group">
-				<label for="username">Username</label>
-				<input required type="text" class="form-control" name="username">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input required type="password" class="form-control" name="password">
-			</div>
-            <br>
-		    <button type="submit" class="btn btn-primary">Login</button>
-		</fieldset>
-		</form> 
+	<div class="login-container">
+			<h1>Login</h1>
+		<?php
+		// Debugging
+		echo "<!--\n";
+		echo "error: " . (isset($error) ? $error : "not set") . "\n";
+		echo "success: " . (isset($success) ? $success : "not set") . "\n";
+		echo "-->\n";
+		?>
+			<form action="/login/verify" method="post">
+					<input type="text" name="username" placeholder="Username" required>
+					<input type="password" name="password" placeholder="Password" required>
+					<input type="submit" value="Login">
+			</form>
+			<p>Don't have an account? <a href="/register">Register</a></p>
 	</div>
-</div>
+	
     <?php require_once 'app/views/templates/footer.php' ?>
