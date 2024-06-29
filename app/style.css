@@ -170,3 +170,103 @@ body {
   border: 1px solid #c8e6c9;
   color: #1b5e20;
 }
+
+.reminder-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.reminder-form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.reminder-form .form-label {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.reminder-form .form-control {
+    border: 2px solid #e0e0e0;
+    transition: border-color 0.3s ease;
+}
+
+.reminder-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.reminder-form .btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.reminder-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container,
+.register-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.login-container h1,
+.register-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.login-container .form-control,
+.register-container .form-control {
+    margin-bottom: 15px;
+}
+
+.login-container .btn-primary,
+.register-container .btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.login-container .btn-primary:hover,
+.register-container .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    color: #b71c1c;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+
+.success-message {
+    background-color: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    color: #1b5e20;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}

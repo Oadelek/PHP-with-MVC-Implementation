@@ -9,9 +9,14 @@ class Login extends Controller {
 
 	public function index() {
 			$data = [
-					'error' => isset($_GET['error']) ? urldecode($_GET['error']) : '',
-					'success' => isset($_GET['success']) ? urldecode($_GET['success']) : ''
+					'error' => isset($_SESSION['error']) ? $_SESSION['error'] : '',
+					'success' => isset($_SESSION['success']) ? $_SESSION['success'] : ''
 			];
+
+			// Clear the session variables after retrieving them
+			unset($_SESSION['error']);
+			unset($_SESSION['success']);
+		
 			$this->view('login/index', $data);
 	}
 
@@ -20,15 +25,15 @@ class Login extends Controller {
 				$password = isset($_REQUEST['password']) ? $_REQUEST['password'] : null;
 
 				if ($username === null || $password === null) {
-						$error = "Username and password are required.";
-						header('Location: /login?error=' . urlencode($error));
+						$_SESSION['error'] = "Username and password are required.";
+						header('Location: /login');
 						exit();
 				}
 
 				// Check if the user is locked out before attempting to log in
 				if ($this->log->is_user_locked_out($username)) {
-						$error = "Too many failed login attempts. Please wait for 60 seconds before trying again.";
-						header('Location: /login?error=' . urlencode($error));
+						$_SESSION['error'] = "Too many failed login attempts. Please wait for 60 seconds before trying again.";
+						header('Location: /login');
 						exit();
 				}
 
@@ -45,8 +50,8 @@ class Login extends Controller {
 						exit();
 				} else {
 						$this->handle_failed_attempt($username);
-						$error = "Incorrect username or password. Please try again.";
-						header('Location: /login?error=' . urlencode($error));
+						$_SESSION['error'] = "Incorrect username or password. Please try again.";
+						header('Location: /login');
 						exit();
 				}
 		}
