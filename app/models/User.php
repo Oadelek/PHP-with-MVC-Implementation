@@ -52,6 +52,15 @@ Class User {
       }
   }
 
+  public function get_user_id_by_username($username) {
+      $db = db_connect();
+      $statement = $db->prepare("SELECT id FROM users WHERE username = :username");
+      $statement->bindParam(':username', $username, PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetch(PDO::FETCH_ASSOC);
+      return $result ? $result['id'] : null;
+  }
+
   private function validate_password($password){
       // Minimum length
       $min_length = 8;

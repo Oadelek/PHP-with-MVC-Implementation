@@ -1,23 +1,24 @@
 <?php
-
 class Reminder extends Controller {
     private $noteModel;
-    private $username;
+    private $userModel;
+    private $user_id;
 
     public function __construct() {
         $this->noteModel = $this->model('Note');
-        $this->username = $_SESSION['username'];
+        $this->userModel = $this->model('User');
+        $this->user_id = $this->userModel->get_user_id_by_username($_SESSION['username']);
     }
 
     public function index() {       
-        $notes = $this->noteModel->get_all_notes_by_user($this->username);
+        $notes = $this->noteModel->get_all_notes_by_user($this->user_id);
         $this->view('reminder/index', ['notes' => $notes]);
     }
 
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $subject = $_POST['subject'];
-            $this->noteModel->create_note($this->username, $subject);
+            $this->noteModel->create_note($this->user_id, $subject);
             header('Location: /reminder');
             exit();
         }
