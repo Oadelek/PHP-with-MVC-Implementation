@@ -1,16 +1,21 @@
-<?php require_once 'app/views/templates/headerPublic.php'
-?>
-<main role="main" class="container">
-	<div class="login-container">
-			<h1>Login</h1>
-			<?php if (!empty($error)) echo "<p class='error-message'>$error</p>"; ?>
-			<?php if (!empty($success)) echo "<p class='success-message'>$success</p>"; ?>
-			<form action="/login/verify" method="post">
-					<input type="text" name="username" placeholder="Username" required>
-					<input type="password" name="password" placeholder="Password" required>
-					<input type="submit" value="Login">
-			</form>
-			<p>Don't have an account? <a href="/register">Register</a></p>
+	<?php require_once 'app/views/templates/headerPublic.php' ?>
+
+	<div class="container">
+			<div class="login-container">
+					<h1 class="text-center mb-4">Login</h1>
+					<?php if (!empty($error)) echo "<div class='error-message'>$error</div>"; ?>
+					<?php if (!empty($success)) echo "<div class='success-message'>$success</div>"; ?>
+					<form action="/login/verify" method="post">
+							<div class="mb-3">
+									<input type="text" class="form-control" name="username" placeholder="Username" required>
+							</div>
+							<div class="mb-3">
+									<input type="password" class="form-control" name="password" placeholder="Password" required>
+							</div>
+							<button type="submit" class="btn btn-primary btn-block">Login</button>
+					</form>
+					<p class="mt-3 text-center">Don't have an account? <a href="/register">Register</a></p>
+			</div>
 	</div>
-	
-    <?php require_once 'app/views/templates/footer.php' ?>
+
+	<?php require_once 'app/views/templates/footer.php' ?>
